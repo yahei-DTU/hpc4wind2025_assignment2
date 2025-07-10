@@ -9,6 +9,8 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 import pandas as pd
 import time
 
+# train_df = pd.read_csv("assignment 2/train_data.csv")
+# test_df = pd.read_csv("assignment 2/test_data.csv")
 train_df = pd.read_csv("train_data.csv")
 test_df = pd.read_csv("test_data.csv")
 
@@ -60,11 +62,10 @@ def train_model(N_HIDDEN, N_LAYERS, learning_rate, batch_size, device, X_train, 
     dataset = TensorDataset(X_train, y_train)
     dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
 
-    best_val_loss = float('inf')
-    best_state_dict = None
-    best_metrics = None
+    epoch_time = []
 
     for epoch in range(num_epochs):
+        start_epoch = time.perf_counter()
         model.train()
         for xb, yb in dataloader:
             optimizer.zero_grad()
@@ -79,16 +80,12 @@ def train_model(N_HIDDEN, N_LAYERS, learning_rate, batch_size, device, X_train, 
             val_loss = nn.MSELoss()(val_preds, y_val)
             metrics = compute_metrics(y_val, val_preds)
 
-        if val_loss.item() < best_val_loss:
-            best_val_loss = val_loss.item()
-            best_state_dict = model.state_dict()
-            best_metrics = metrics
+        # if epoch % 100 == 0:
+        #     print(f"Epoch {epoch}: Train Loss = {loss.item():.6f}, Validation Loss = {val_loss.item():.6f}")
+        #     print(f" -> MSE: {metrics['mse']:.6f}, MAE: {metrics['mae']:.6f}, R2: {metrics['r2']:.4f}\n")
+        epoch_time.append(time.perf_counter() - start_epoch)
 
-        if epoch % 100 == 0:
-            print(f"Epoch {epoch}: Train Loss = {loss.item():.6f}, Validation Loss = {val_loss.item():.6f}")
-            print(f" -> MSE: {metrics['mse']:.6f}, MAE: {metrics['mae']:.6f}, R2: {metrics['r2']:.4f}\n")
-
-    return best_metrics, best_state_dict
+    return metrics, np.mean(epoch_time), np.std(epoch_time)
 
 # Grid Search Runner
 def run_grid_search(X_train, y_train, X_val, y_val, device):
@@ -96,43 +93,49 @@ def run_grid_search(X_train, y_train, X_val, y_val, device):
     num_layers_list = [2, 3, 5]
     learning_rates = [1e-4, 1e-5]
     batch_sizes = [16, 32]
-    num_epochs = 1000
+    num_epochs = 500
 
     grid_results = []
     best_by_metric = {
-        'mse': {'score': float('inf'), 'params': None, 'model': None},
-        'mae': {'score': float('inf'), 'params': None, 'model': None},
-        'r2': {'score': -float('inf'), 'params': None, 'model': None}
+        'mse': {'score': float('inf'), 'params': None},
+        'mae': {'score': float('inf'), 'params': None},
+        'r2': {'score': -float('inf'), 'params': None}
     }
 
     for hs, nl, lr, bs in product(hidden_sizes, num_layers_list, learning_rates, batch_sizes):
         print(f"-> H={hs}, L={nl}, LR={lr}, BS={bs}")
-        metrics, state_dict = train_model(hs, nl, lr, bs, device, X_train, y_train, X_val, y_val, num_epochs)
+        metrics, epoch_mean, epoch_std = train_model(hs, nl, lr, bs, device, X_train, y_train, X_val, y_val, num_epochs)
 
         row = {
+            'mse': metrics['mse'],
+            'mae': metrics['mae'],
+            'r2': metrics['r2'],
             'hidden_size': hs,
             'num_layers': nl,
             'learning_rate': lr,
             'batch_size': bs,
-            **metrics
+            'epoch_mean': epoch_mean,
+            'epoch_std': epoch_std
         }
+        
         grid_results.append(row)
 
         if metrics['mse'] < best_by_metric['mse']['score']:
-            best_by_metric['mse'] = {'score': metrics['mse'], 'params': row, 'model': state_dict}
+            best_by_metric['mse'] = {'score': metrics['mse'], 'hs': hs, 'nl': nl,
+                                    'lr': lr, 'bs': bs, 'em': epoch_mean, 'estd': epoch_std}
         if metrics['mae'] < best_by_metric['mae']['score']:
-            best_by_metric['mae'] = {'score': metrics['mae'], 'params': row, 'model': state_dict}
+            best_by_metric['mae'] = {'score': metrics['mae'], 'hs': hs, 'nl': nl,
+                                    'lr': lr, 'bs': bs, 'em': epoch_mean, 'estd': epoch_std}
         if metrics['r2'] > best_by_metric['r2']['score']:
-            best_by_metric['r2'] = {'score': metrics['r2'], 'params': row, 'model': state_dict}
+            best_by_metric['r2'] = {'score': metrics['r2'], 'hs': hs, 'nl': nl,
+                                    'lr': lr, 'bs': bs, 'em': epoch_mean, 'estd': epoch_std}
 
     return pd.DataFrame(grid_results), best_by_metric
 
 # Main wrapper
-def run_full_pipeline(cpu_only=False):
+def run_full_pipeline():
     # Set device
-    device = torch.device('cpu') if cpu_only or not torch.cuda.is_available() else torch.device('cuda')
-    #device = torch.device('cuda')
-    print(device)
+    device = torch.device('cpu') if not torch.cuda.is_available() else torch.device('cuda')
 
     # Fix random seeds
     torch.manual_seed(123)
@@ -159,36 +162,16 @@ def run_full_pipeline(cpu_only=False):
         end = time.perf_counter()
 
     total_time = end - start
-    return results_df, bests, total_time
+    return results_df, bests, total_time, device
 
-# Run on CPU and GPU (if available)
-cpu_results, cpu_bests, cpu_time = run_full_pipeline(cpu_only=True)
-print(f"\nCPU Grid Search Time: {cpu_time:.2f} seconds")
-
-# gpu_results, gpu_bests, gpu_time = run_full_pipeline(cpu_only=False)
-# print(f"\nGPU Grid Search Time: {gpu_time:.2f} seconds")
+results, bests, time, device = run_full_pipeline()
+print(f"\n{device} grid search time: {time:.2f} seconds")
 
 print('Metric: MSE')
-print(cpu_bests['mse']['score'])
-print(cpu_bests['mse']['params'])
+print(bests['mse'])
 
 print('Metric: MAE')
-print(cpu_bests['mae']['score'])
-print(cpu_bests['mae']['params'])
+print(bests['mae'])
 
 print('Metric: R2')
-print(cpu_bests['r2']['score'])
-print(cpu_bests['r2']['params'])
-
-# # Print summary
-# summary = {
-#     'Metric': ['MSE', 'MAE', 'R²'],
-#     'CPU Best Score': [cpu_bests['mse']['score'], cpu_bests['mae']['score'], cpu_bests['r2']['score']],
-#     'CPU Best Params': [cpu_bests['mse']['params'], cpu_bests['mae']['params'], cpu_bests['r2']['params']],
-#     'GPU Best Score': [gpu_bests['mse']['score'], gpu_bests['mae']['score'], gpu_bests['r2']['score']],
-#     'GPU Best Params': [gpu_bests['mse']['params'], gpu_bests['mae']['params'], gpu_bests['r2']['params']],
-# }
-
-# summary_df = pd.DataFrame(summary)
-# print("\nSummary of Best Hyperparameters per Metric (CPU vs GPU):")
-# print(summary_df)
+print(bests['r2'])
