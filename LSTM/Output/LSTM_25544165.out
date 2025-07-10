@@ -1,0 +1,162 @@
+Using device: cpu
+shape of energy dataset: (35064, 29)
+shape of weather features: (178396, 17)
+preprocessing data...
+vanilla_lstm
+stacked_lstm
+model_bilstm
+{'vanilla_lstm': LSTMModel(
+  (lstm): LSTM(30, 32, batch_first=True)
+  (fc): Linear(in_features=32, out_features=1, bias=True)
+), 'stacked_lstm': LSTMModel(
+  (lstm): LSTM(30, 32, num_layers=2, batch_first=True, dropout=0.2)
+  (fc): Linear(in_features=32, out_features=1, bias=True)
+), 'model_bilstm': LSTMModel(
+  (lstm): LSTM(30, 32, num_layers=5, batch_first=True, bidirectional=True)
+  (fc): Linear(in_features=64, out_features=1, bias=True)
+)}
+===== training vanilla_lstm =====
+[1/500] Training loss: 1.0288
+[2/500] Training loss: 1.0179
+[3/500] Training loss: 1.0085
+[4/500] Training loss: 0.9997
+[5/500] Training loss: 0.9914
+[6/500] Training loss: 0.9837
+[7/500] Training loss: 0.9764
+[8/500] Training loss: 0.9695
+[9/500] Training loss: 0.9629
+[10/500] Training loss: 0.9567
+[50/500] Training loss: 0.8129
+[100/500] Training loss: 0.6988
+[150/500] Training loss: 0.5953
+[200/500] Training loss: 0.5012
+[250/500] Training loss: 0.4184
+[300/500] Training loss: 0.3462
+[350/500] Training loss: 0.2851
+[400/500] Training loss: 0.2369
+[450/500] Training loss: 0.2000
+[500/500] Training loss: 0.1714
+Training time for vanilla_lstm: 60.9990 seconds
+Mean time per epoch for vanilla_lstm: 0.1220 seconds
+model_path ./models/vanilla_lstm.pth
+==== plot losses - vanilla_lstm ====== 
+===== scores for vanilla_lstm ====
+vanilla_lstm: [0.355] 1.1, 1.5, 1.0, 1.3, 1.2, 1.4, 1.2
+===== training stacked_lstm =====
+[1/500] Training loss: 1.0222
+[2/500] Training loss: 1.0161
+[3/500] Training loss: 1.0106
+[4/500] Training loss: 1.0060
+[5/500] Training loss: 1.0012
+[6/500] Training loss: 0.9968
+[7/500] Training loss: 0.9931
+[8/500] Training loss: 0.9880
+[9/500] Training loss: 0.9843
+[10/500] Training loss: 0.9795
+[50/500] Training loss: 0.7953
+[100/500] Training loss: 0.6852
+[150/500] Training loss: 0.6007
+[200/500] Training loss: 0.5354
+[250/500] Training loss: 0.4821
+[300/500] Training loss: 0.4264
+[350/500] Training loss: 0.3901
+[400/500] Training loss: 0.3467
+[450/500] Training loss: 0.3131
+[500/500] Training loss: 0.2876
+Training time for stacked_lstm: 90.8478 seconds
+Mean time per epoch for stacked_lstm: 0.1817 seconds
+model_path ./models/stacked_lstm.pth
+==== plot losses - stacked_lstm ====== 
+===== scores for stacked_lstm ====
+stacked_lstm: [0.263] 1.0, 1.4, 1.0, 1.3, 1.2, 1.2, 1.1
+===== training model_bilstm =====
+[1/500] Training loss: 1.0032
+[2/500] Training loss: 1.0011
+[3/500] Training loss: 0.9999
+[4/500] Training loss: 0.9989
+[5/500] Training loss: 0.9979
+[6/500] Training loss: 0.9964
+[7/500] Training loss: 0.9937
+[8/500] Training loss: 0.9872
+[9/500] Training loss: 0.9700
+[10/500] Training loss: 0.9374
+[50/500] Training loss: 0.7055
+[100/500] Training loss: 0.5269
+[150/500] Training loss: 0.3554
+[200/500] Training loss: 0.2286
+[250/500] Training loss: 0.1465
+[300/500] Training loss: 0.0827
+[350/500] Training loss: 0.0548
+[400/500] Training loss: 0.0397
+[450/500] Training loss: 0.0303
+[500/500] Training loss: 0.0253
+Training time for model_bilstm: 325.6638 seconds
+Mean time per epoch for model_bilstm: 0.6513 seconds
+model_path ./models/model_bilstm.pth
+==== plot losses - model_bilstm ====== 
+===== scores for model_bilstm ====
+model_bilstm: [0.303] 1.2, 1.4, 1.2, 1.3, 1.3, 1.2, 1.1
+RMSE for Vanilla LSTM:  11800793.251815267
+RMSE for BILSTM:  11891259.657305319
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 25544165: <LSTM> in cluster <dcc> Done
+
+Job <LSTM> was submitted from host <n-62-27-19> by user <yahei> in cluster <dcc> at Thu Jul 10 13:12:49 2025
+Job was executed on host(s) <24*n-62-21-89>, in queue <hpc>, as user <yahei> in cluster <dcc> at Thu Jul 10 13:12:50 2025
+</zhome/25/9/211757> was used as the home directory.
+</zhome/25/9/211757/hpc4wind2025_assignment2/LSTM> was used as the working directory.
+Started at Thu Jul 10 13:12:50 2025
+Terminated at Thu Jul 10 13:21:07 2025
+Results reported at Thu Jul 10 13:21:07 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -q hpc
+#BSUB -J LSTM
+#BSUB -n 24
+#BSUB -W 03:00
+#BSUB -u yahei@dtu.dk
+#BSUB -P hpc4wind2025
+#BSUB -R "rusage[mem=16GB]"
+#BSUB -R "select[model==XeonE5_2650v4]"
+#BSUB -R "span[hosts=1]"
+
+#BSUB -o Output/LSTM_%J.out
+#BSUB -e Output/LSTM_%J.err
+
+source /dtu/projects/HPC4Wind_2025/conda/conda_init.sh
+conda activate hpc4wind
+
+#script here
+python /zhome/25/9/211757/hpc4wind2025_assignment2/LSTM/LSTM.py
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   487.81 sec.
+    Max Memory :                                 539 MB
+    Average Memory :                             448.50 MB
+    Total Requested Memory :                     393216.00 MB
+    Delta Memory :                               392677.00 MB
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                6
+    Run time :                                   497 sec.
+    Turnaround time :                            498 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <Output/LSTM_25544165.err> for stderr output of this job.
+
