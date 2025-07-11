@@ -254,7 +254,7 @@ class Optimization:
         for i in range(actual.shape[1]):
             # calculate mse
             mse = mean_squared_error(actual[:, i], predicted[:, i])
-            
+
             # calculate rmse
             rmse = sqrt(mse)
             # store
@@ -411,82 +411,73 @@ if __name__ == "__main__":
     ################################ 4 ########################################
     input_dim = X_train.shape[2]
     n_seq = 7
-    batch_size = 16
     output_dim = 1
-    hidden_dim = 32
     n_epochs = 500
-    learning_rate = 1e-4
     weight_decay = 1e-6
+    #batch_size_grid = np.array([16,32])
+    #learning_rate_grid = np.array([1e-4, 1e-5])
+    #num_layers_grid = np.array([2, 3, 5])
+    #hidden_dim_grid = np.array([32, 64])
+    batch_size_grid = np.array([16]) # best parameters
+    learning_rate_grid = np.array([1e-4]) # best parameters
+    num_layers_grid = np.array([3]) # best parameters
+    hidden_dim_grid = np.array([32]) # best parameters
+    for batch_size in batch_size_grid:
+        for learning_rate in learning_rate_grid:
+            for num_layers in num_layers_grid:
+                for hidden_dim in hidden_dim_grid:
+                    print(f"Batch size: {batch_size}, Learning rate: {learning_rate}, Num layers: {num_layers}, Hidden dim: {hidden_dim}")
+                    model_params = {'input_dim': input_dim,
+                                'hidden_dim' : int(hidden_dim),
+                                'output_dim' : output_dim,
+                                }
 
-    model_params = {'input_dim': input_dim,
-                'hidden_dim' : hidden_dim,
-                'output_dim' : output_dim,
-                }
+                    models = {
+                        "vanilla_lstm":LSTMModel(**model_params,layer_dim=int(num_layers),is_bidirectional=False,dropout_prob=0).to(device)
+                    }
+                    loss_fn = nn.MSELoss(reduction="mean")
+                    opts = []
+                    for name_model,model in models.items():
+                        print(name_model)
+                        optimizer = optim.Adam(model.parameters(), lr=learning_rate, weight_decay=weight_decay)
+                        opt = Optimization(model=model, loss_fn=loss_fn, optimizer=optimizer)
+                        opts.append((f"{name_model}",opt))
+                    print(models)
+                    if not os.path.exists("./models"):
+                        os.makedirs("./models")
 
-    models = {
-        "vanilla_lstm":LSTMModel(**model_params,layer_dim=1,is_bidirectional=False,dropout_prob=0).to(device),
-        "stacked_lstm":LSTMModel(**model_params,layer_dim=2,is_bidirectional=False,dropout_prob=0.2).to(device),
-        "model_bilstm":LSTMModel(**model_params,layer_dim=5,is_bidirectional=True,dropout_prob=0).to(device)
-    }
-    loss_fn = nn.MSELoss(reduction="mean")
-    opts = []
-    for name_model,model in models.items():
-        print(name_model)
-        optimizer = optim.Adam(model.parameters(), lr=learning_rate, weight_decay=weight_decay)
-        opt = Optimization(model=model, loss_fn=loss_fn, optimizer=optimizer)
-        opts.append((f"{name_model}",opt))
-    print(models)
-    if not os.path.exists("./models"):
-        os.makedirs("./models")
+                    predictions_by_model = {
+                        "vanilla_lstm":[]
+                    }
 
-    predictions_by_model = {
-        "vanilla_lstm":[],
-        "stacked_lstm":[],
-        "model_bilstm":[]
-    }
+                    for name_model,opt in opts:
+                        print(f"===== training {name_model} =====")
+                        if torch.cuda.is_available():
+                            torch.cuda.synchronize()
+                        time_start = time.perf_counter()
+                        model = opt.train(train_loader, n_epochs=n_epochs,batch_size=batch_size,n_features=input_dim)
+                        if torch.cuda.is_available():
+                            torch.cuda.synchronize()
+                        time_end = time.perf_counter()
+                        print(f"Training time for {name_model}: {time_end - time_start:.4f} seconds")
+                        mean_time_per_epoch = (time_end - time_start) / n_epochs
+                        print(f"Mean time per epoch for {name_model}: {mean_time_per_epoch:.4f} seconds")
+                        model_path = f'./models/{name_model}.pth'
+                        print("model_path", model_path)
+                        torch.save(model, model_path)
+                        print(f"==== plot losses - {name_model} ====== ")
+                        opt.plot_losses()
+                        score, scores,predictions = opt.evaluate_model(week_train_dataset, week_test_dataset, n_seq,model)
+                        predictions_by_model[name_model].append(predictions)
+                        # summarize scores
+                        print(f"===== scores for {name_model} ====")
+                        opt.summarize_scores(name_model, score, scores)
 
-    for name_model,opt in opts:
-        print(f"===== training {name_model} =====")
-        if torch.cuda.is_available():
-            torch.cuda.synchronize()
-        time_start = time.perf_counter()
-        model = opt.train(train_loader, n_epochs=n_epochs,batch_size=batch_size,n_features=input_dim)
-        if torch.cuda.is_available():
-            torch.cuda.synchronize()
-        time_end = time.perf_counter()
-        print(f"Training time for {name_model}: {time_end - time_start:.4f} seconds")
-        mean_time_per_epoch = (time_end - time_start) / n_epochs
-        print(f"Mean time per epoch for {name_model}: {mean_time_per_epoch:.4f} seconds")
-        model_path = f'./models/{name_model}.pth'
-        print("model_path", model_path)
-        torch.save(model, model_path)
-        print(f"==== plot losses - {name_model} ====== ")
-        opt.plot_losses()
-        score, scores,predictions = opt.evaluate_model(week_train_dataset, week_test_dataset, n_seq,model)
-        predictions_by_model[name_model].append(predictions)
-        # summarize scores
-        print(f"===== scores for {name_model} ====")
-        opt.summarize_scores(name_model, score, scores)
+                    pred_vanilla_lstm_values = predictions_by_model["vanilla_lstm"][0].squeeze(2)
+                    vanilla_lstm_values = np.ravel(inverse_transform(y_test.values.reshape(-1,1),pred_vanilla_lstm_values))
+                    
+                    df_vanilla_lstm_values = format_predictions(vanilla_lstm_values,y_test,y_test.index)
 
-    pred_vanilla_lstm_values = predictions_by_model["vanilla_lstm"][0].squeeze(2)
-    vanilla_lstm_values = np.ravel(inverse_transform(y_test.values.reshape(-1,1),pred_vanilla_lstm_values))
-    
-    df_vanilla_lstm_values = format_predictions(vanilla_lstm_values,y_test,y_test.index)
+                    print(f"RMSE for Vanilla LSTM: ",mean_squared_error(df_vanilla_lstm_values["total_load_real_values"], 
+                                                                        df_vanilla_lstm_values["total_load_predicted_values"]))
 
-    print(f"RMSE for Vanilla LSTM: ",mean_squared_error(df_vanilla_lstm_values["total_load_real_values"], 
-                                                        df_vanilla_lstm_values["total_load_predicted_values"]))
-    
-    # Predicitons for Stacked LSTM with two layers
-    pred_stacked_lstm_values = predictions_by_model["stacked_lstm"][0].squeeze(2)
-    stacked_lstm_values = np.ravel(inverse_transform(y_test.values.reshape(-1,1),pred_stacked_lstm_values))
-
-    df_stacked_lstm_values = format_predictions(stacked_lstm_values,y_test,y_test.index)
-
-    # Predictions for Bi LSTM
-    pred_bilstm_values = predictions_by_model["model_bilstm"][0].squeeze(2)
-    bilstm_values = np.ravel(inverse_transform(y_test.values.reshape(-1,1),pred_bilstm_values))
-
-    df_bilstm_values = format_predictions(bilstm_values,y_test,y_test.index)
-    print(f"RMSE for BILSTM: ",mean_squared_error(df_bilstm_values["total_load_real_values"],
-                                                  df_bilstm_values["total_load_predicted_values"]))
-    

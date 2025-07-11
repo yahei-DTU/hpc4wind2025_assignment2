@@ -1,0 +1,100 @@
+Using device: cuda
+shape of energy dataset: (35064, 29)
+shape of weather features: (178396, 17)
+preprocessing data...
+Batch size: 16, Learning rate: 0.0001, Num layers: 3, Hidden dim: 32
+vanilla_lstm
+{'vanilla_lstm': LSTMModel(
+  (lstm): LSTM(30, 32, num_layers=3, batch_first=True)
+  (fc): Linear(in_features=32, out_features=1, bias=True)
+)}
+===== training vanilla_lstm =====
+[1/500] Training loss: 1.0028
+[2/500] Training loss: 1.0010
+[3/500] Training loss: 0.9996
+[4/500] Training loss: 0.9983
+[5/500] Training loss: 0.9971
+[6/500] Training loss: 0.9958
+[7/500] Training loss: 0.9945
+[8/500] Training loss: 0.9929
+[9/500] Training loss: 0.9911
+[10/500] Training loss: 0.9891
+[50/500] Training loss: 0.8340
+[100/500] Training loss: 0.6710
+[150/500] Training loss: 0.5387
+[200/500] Training loss: 0.4191
+[250/500] Training loss: 0.3330
+[300/500] Training loss: 0.2708
+[350/500] Training loss: 0.2297
+[400/500] Training loss: 0.1913
+[450/500] Training loss: 0.1697
+[500/500] Training loss: 0.1480
+Training time for vanilla_lstm: 63.5595 seconds
+Mean time per epoch for vanilla_lstm: 0.1271 seconds
+model_path ./models/vanilla_lstm.pth
+==== plot losses - vanilla_lstm ====== 
+===== scores for vanilla_lstm ====
+vanilla_lstm: [0.194] 1.1, 1.6, 1.2, 1.4, 1.5, 1.2, 1.2
+RMSE for Vanilla LSTM:  13141458.85560031
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 25558283: <LSTM_GPU> in cluster <dcc> Done
+
+Job <LSTM_GPU> was submitted from host <hpclogin1> by user <yahei> in cluster <dcc> at Fri Jul 11 12:39:40 2025
+Job was executed on host(s) <4*n-62-20-13>, in queue <gpuv100>, as user <yahei> in cluster <dcc> at Fri Jul 11 12:40:45 2025
+</zhome/25/9/211757> was used as the home directory.
+</zhome/25/9/211757/hpc4wind2025_assignment2/LSTM> was used as the working directory.
+Started at Fri Jul 11 12:40:45 2025
+Terminated at Fri Jul 11 12:42:02 2025
+Results reported at Fri Jul 11 12:42:02 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/sh
+#BSUB -q gpuv100
+#BSUB -J LSTM_GPU
+#BSUB -P hpc4wind2025
+#BSUB -n 4
+#BSUB -u yahei@dtu.dk
+#BSUB -R "span[hosts=1]"
+#BSUB -R "rusage[mem=1GB]"
+#BSUB -gpu "num=1:mode=exclusive_process"
+#BSUB -W 00:30
+#BSUB -R "select[gpu32gb]"
+#BSUB -o Output/LSTM_GPU_%J.out
+#BSUB -e Output/LSTM_GPU_%J.err
+
+source /dtu/projects/HPC4Wind_2025/conda/conda_init.sh
+conda activate hpc4wind
+
+#script here
+python /zhome/25/9/211757/hpc4wind2025_assignment2/LSTM/LSTM.py
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   72.07 sec.
+    Max Memory :                                 788 MB
+    Average Memory :                             788.00 MB
+    Total Requested Memory :                     4096.00 MB
+    Delta Memory :                               3308.00 MB
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                9
+    Run time :                                   76 sec.
+    Turnaround time :                            142 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <Output/LSTM_GPU_25558283.err> for stderr output of this job.
+

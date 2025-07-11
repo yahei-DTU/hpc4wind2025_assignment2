@@ -1,0 +1,882 @@
+Using device: cpu
+shape of energy dataset: (35064, 29)
+shape of weather features: (178396, 17)
+preprocessing data...
+Batch size: 16, Learning rate: 0.0001, Num layers: 2, Hidden dim: 32
+vanilla_lstm
+{'vanilla_lstm': LSTMModel(
+  (lstm): LSTM(30, 32, num_layers=2, batch_first=True)
+  (fc): Linear(in_features=32, out_features=1, bias=True)
+)}
+===== training vanilla_lstm =====
+[1/500] Training loss: 1.0270
+[2/500] Training loss: 1.0199
+[3/500] Training loss: 1.0139
+[4/500] Training loss: 1.0086
+[5/500] Training loss: 1.0038
+[6/500] Training loss: 0.9994
+[7/500] Training loss: 0.9952
+[8/500] Training loss: 0.9912
+[9/500] Training loss: 0.9874
+[10/500] Training loss: 0.9837
+[50/500] Training loss: 0.8254
+[100/500] Training loss: 0.6708
+[150/500] Training loss: 0.5238
+[200/500] Training loss: 0.4029
+[250/500] Training loss: 0.3167
+[300/500] Training loss: 0.2517
+[350/500] Training loss: 0.2085
+[400/500] Training loss: 0.1755
+[450/500] Training loss: 0.1502
+[500/500] Training loss: 0.1332
+Training time for vanilla_lstm: 90.0593 seconds
+Mean time per epoch for vanilla_lstm: 0.1801 seconds
+model_path ./models/vanilla_lstm.pth
+==== plot losses - vanilla_lstm ====== 
+===== scores for vanilla_lstm ====
+vanilla_lstm: [0.339] 1.0, 1.5, 1.3, 1.5, 1.4, 1.3, 1.5
+RMSE for Vanilla LSTM:  14285395.890733285
+Batch size: 16, Learning rate: 0.0001, Num layers: 2, Hidden dim: 64
+vanilla_lstm
+{'vanilla_lstm': LSTMModel(
+  (lstm): LSTM(30, 64, num_layers=2, batch_first=True)
+  (fc): Linear(in_features=64, out_features=1, bias=True)
+)}
+===== training vanilla_lstm =====
+[1/500] Training loss: 1.0108
+[2/500] Training loss: 1.0038
+[3/500] Training loss: 0.9981
+[4/500] Training loss: 0.9927
+[5/500] Training loss: 0.9873
+[6/500] Training loss: 0.9818
+[7/500] Training loss: 0.9759
+[8/500] Training loss: 0.9697
+[9/500] Training loss: 0.9633
+[10/500] Training loss: 0.9566
+[50/500] Training loss: 0.7288
+[100/500] Training loss: 0.5283
+[150/500] Training loss: 0.3526
+[200/500] Training loss: 0.2575
+[250/500] Training loss: 0.2006
+[300/500] Training loss: 0.1645
+[350/500] Training loss: 0.1388
+[400/500] Training loss: 0.1245
+[450/500] Training loss: 0.1033
+[500/500] Training loss: 0.0898
+Training time for vanilla_lstm: 113.3485 seconds
+Mean time per epoch for vanilla_lstm: 0.2267 seconds
+model_path ./models/vanilla_lstm.pth
+==== plot losses - vanilla_lstm ====== 
+===== scores for vanilla_lstm ====
+vanilla_lstm: [0.261] 1.2, 1.7, 1.3, 1.4, 1.2, 1.1, 1.2
+RMSE for Vanilla LSTM:  13178792.536922073
+Batch size: 16, Learning rate: 0.0001, Num layers: 3, Hidden dim: 32
+vanilla_lstm
+{'vanilla_lstm': LSTMModel(
+  (lstm): LSTM(30, 32, num_layers=3, batch_first=True)
+  (fc): Linear(in_features=32, out_features=1, bias=True)
+)}
+===== training vanilla_lstm =====
+[1/500] Training loss: 1.0029
+[2/500] Training loss: 1.0015
+[3/500] Training loss: 1.0005
+[4/500] Training loss: 0.9995
+[5/500] Training loss: 0.9986
+[6/500] Training loss: 0.9978
+[7/500] Training loss: 0.9969
+[8/500] Training loss: 0.9958
+[9/500] Training loss: 0.9947
+[10/500] Training loss: 0.9933
+[50/500] Training loss: 0.8073
+[100/500] Training loss: 0.6392
+[150/500] Training loss: 0.5074
+[200/500] Training loss: 0.3956
+[250/500] Training loss: 0.3201
+[300/500] Training loss: 0.2612
+[350/500] Training loss: 0.2146
+[400/500] Training loss: 0.1794
+[450/500] Training loss: 0.1587
+[500/500] Training loss: 0.1378
+Training time for vanilla_lstm: 115.1917 seconds
+Mean time per epoch for vanilla_lstm: 0.2304 seconds
+model_path ./models/vanilla_lstm.pth
+==== plot losses - vanilla_lstm ====== 
+===== scores for vanilla_lstm ====
+vanilla_lstm: [0.219] 1.1, 1.8, 1.6, 1.5, 1.4, 1.3, 1.5
+RMSE for Vanilla LSTM:  16152884.826067401
+Batch size: 16, Learning rate: 0.0001, Num layers: 3, Hidden dim: 64
+vanilla_lstm
+{'vanilla_lstm': LSTMModel(
+  (lstm): LSTM(30, 64, num_layers=3, batch_first=True)
+  (fc): Linear(in_features=64, out_features=1, bias=True)
+)}
+===== training vanilla_lstm =====
+[1/500] Training loss: 0.9983
+[2/500] Training loss: 0.9970
+[3/500] Training loss: 0.9958
+[4/500] Training loss: 0.9941
+[5/500] Training loss: 0.9917
+[6/500] Training loss: 0.9881
+[7/500] Training loss: 0.9831
+[8/500] Training loss: 0.9761
+[9/500] Training loss: 0.9679
+[10/500] Training loss: 0.9596
+[50/500] Training loss: 0.7308
+[100/500] Training loss: 0.5128
+[150/500] Training loss: 0.3569
+[200/500] Training loss: 0.2565
+[250/500] Training loss: 0.1925
+[300/500] Training loss: 0.1644
+[350/500] Training loss: 0.1327
+[400/500] Training loss: 0.1155
+[450/500] Training loss: 0.1008
+[500/500] Training loss: 0.0862
+Training time for vanilla_lstm: 153.6935 seconds
+Mean time per epoch for vanilla_lstm: 0.3074 seconds
+model_path ./models/vanilla_lstm.pth
+==== plot losses - vanilla_lstm ====== 
+===== scores for vanilla_lstm ====
+vanilla_lstm: [0.286] 1.3, 1.5, 1.6, 1.3, 1.2, 1.2, 1.2
+RMSE for Vanilla LSTM:  13475128.762278175
+Batch size: 16, Learning rate: 0.0001, Num layers: 5, Hidden dim: 32
+vanilla_lstm
+{'vanilla_lstm': LSTMModel(
+  (lstm): LSTM(30, 32, num_layers=5, batch_first=True)
+  (fc): Linear(in_features=32, out_features=1, bias=True)
+)}
+===== training vanilla_lstm =====
+[1/500] Training loss: 1.0396
+[2/500] Training loss: 1.0295
+[3/500] Training loss: 1.0218
+[4/500] Training loss: 1.0157
+[5/500] Training loss: 1.0112
+[6/500] Training loss: 1.0078
+[7/500] Training loss: 1.0055
+[8/500] Training loss: 1.0039
+[9/500] Training loss: 1.0028
+[10/500] Training loss: 1.0019
+[50/500] Training loss: 0.8777
+[100/500] Training loss: 0.7399
+[150/500] Training loss: 0.6234
+[200/500] Training loss: 0.5292
+[250/500] Training loss: 0.4694
+[300/500] Training loss: 0.4305
+[350/500] Training loss: 0.3841
+[400/500] Training loss: 0.3442
+[450/500] Training loss: 0.2916
+[500/500] Training loss: 0.2501
+Training time for vanilla_lstm: 168.4568 seconds
+Mean time per epoch for vanilla_lstm: 0.3369 seconds
+model_path ./models/vanilla_lstm.pth
+==== plot losses - vanilla_lstm ====== 
+===== scores for vanilla_lstm ====
+vanilla_lstm: [0.263] 1.1, 1.6, 1.1, 1.4, 1.4, 1.4, 1.3
+RMSE for Vanilla LSTM:  13486012.184040615
+Batch size: 16, Learning rate: 0.0001, Num layers: 5, Hidden dim: 64
+vanilla_lstm
+{'vanilla_lstm': LSTMModel(
+  (lstm): LSTM(30, 64, num_layers=5, batch_first=True)
+  (fc): Linear(in_features=64, out_features=1, bias=True)
+)}
+===== training vanilla_lstm =====
+[1/500] Training loss: 1.0005
+[2/500] Training loss: 0.9998
+[3/500] Training loss: 0.9995
+[4/500] Training loss: 0.9993
+[5/500] Training loss: 0.9992
+[6/500] Training loss: 0.9990
+[7/500] Training loss: 0.9986
+[8/500] Training loss: 0.9981
+[9/500] Training loss: 0.9967
+[10/500] Training loss: 0.9932
+[50/500] Training loss: 0.7665
+[100/500] Training loss: 0.5785
+[150/500] Training loss: 0.4002
+[200/500] Training loss: 0.2813
+[250/500] Training loss: 0.2099
+[300/500] Training loss: 0.1661
+[350/500] Training loss: 0.1473
+[400/500] Training loss: 0.1218
+[450/500] Training loss: 0.1008
+[500/500] Training loss: 0.0932
+Training time for vanilla_lstm: 235.0825 seconds
+Mean time per epoch for vanilla_lstm: 0.4702 seconds
+model_path ./models/vanilla_lstm.pth
+==== plot losses - vanilla_lstm ====== 
+===== scores for vanilla_lstm ====
+vanilla_lstm: [0.254] 1.4, 1.6, 1.3, 1.3, 1.3, 1.2, 1.3
+RMSE for Vanilla LSTM:  13679032.833892666
+Batch size: 16, Learning rate: 1e-05, Num layers: 2, Hidden dim: 32
+vanilla_lstm
+{'vanilla_lstm': LSTMModel(
+  (lstm): LSTM(30, 32, num_layers=2, batch_first=True)
+  (fc): Linear(in_features=32, out_features=1, bias=True)
+)}
+===== training vanilla_lstm =====
+[1/500] Training loss: 0.9991
+[2/500] Training loss: 0.9988
+[3/500] Training loss: 0.9985
+[4/500] Training loss: 0.9983
+[5/500] Training loss: 0.9980
+[6/500] Training loss: 0.9978
+[7/500] Training loss: 0.9975
+[8/500] Training loss: 0.9973
+[9/500] Training loss: 0.9970
+[10/500] Training loss: 0.9968
+[50/500] Training loss: 0.9865
+[100/500] Training loss: 0.9709
+[150/500] Training loss: 0.9510
+[200/500] Training loss: 0.9296
+[250/500] Training loss: 0.9105
+[300/500] Training loss: 0.8946
+[350/500] Training loss: 0.8802
+[400/500] Training loss: 0.8659
+[450/500] Training loss: 0.8508
+[500/500] Training loss: 0.8348
+Training time for vanilla_lstm: 86.9952 seconds
+Mean time per epoch for vanilla_lstm: 0.1740 seconds
+model_path ./models/vanilla_lstm.pth
+==== plot losses - vanilla_lstm ====== 
+===== scores for vanilla_lstm ====
+vanilla_lstm: [0.269] 1.0, 1.3, 0.9, 1.0, 0.9, 1.0, 0.8
+RMSE for Vanilla LSTM:  7419979.745309877
+Batch size: 16, Learning rate: 1e-05, Num layers: 2, Hidden dim: 64
+vanilla_lstm
+{'vanilla_lstm': LSTMModel(
+  (lstm): LSTM(30, 64, num_layers=2, batch_first=True)
+  (fc): Linear(in_features=64, out_features=1, bias=True)
+)}
+===== training vanilla_lstm =====
+[1/500] Training loss: 1.0087
+[2/500] Training loss: 1.0080
+[3/500] Training loss: 1.0073
+[4/500] Training loss: 1.0067
+[5/500] Training loss: 1.0060
+[6/500] Training loss: 1.0053
+[7/500] Training loss: 1.0047
+[8/500] Training loss: 1.0040
+[9/500] Training loss: 1.0034
+[10/500] Training loss: 1.0027
+[50/500] Training loss: 0.9791
+[100/500] Training loss: 0.9473
+[150/500] Training loss: 0.9160
+[200/500] Training loss: 0.8864
+[250/500] Training loss: 0.8570
+[300/500] Training loss: 0.8299
+[350/500] Training loss: 0.8069
+[400/500] Training loss: 0.7872
+[450/500] Training loss: 0.7698
+[500/500] Training loss: 0.7535
+Training time for vanilla_lstm: 112.0896 seconds
+Mean time per epoch for vanilla_lstm: 0.2242 seconds
+model_path ./models/vanilla_lstm.pth
+==== plot losses - vanilla_lstm ====== 
+===== scores for vanilla_lstm ====
+vanilla_lstm: [0.309] 1.0, 1.3, 0.9, 1.1, 0.9, 1.1, 1.0
+RMSE for Vanilla LSTM:  7972781.135341613
+Batch size: 16, Learning rate: 1e-05, Num layers: 3, Hidden dim: 32
+vanilla_lstm
+{'vanilla_lstm': LSTMModel(
+  (lstm): LSTM(30, 32, num_layers=3, batch_first=True)
+  (fc): Linear(in_features=32, out_features=1, bias=True)
+)}
+===== training vanilla_lstm =====
+[1/500] Training loss: 1.0102
+[2/500] Training loss: 1.0098
+[3/500] Training loss: 1.0095
+[4/500] Training loss: 1.0091
+[5/500] Training loss: 1.0087
+[6/500] Training loss: 1.0084
+[7/500] Training loss: 1.0081
+[8/500] Training loss: 1.0078
+[9/500] Training loss: 1.0075
+[10/500] Training loss: 1.0072
+[50/500] Training loss: 0.9998
+[100/500] Training loss: 0.9951
+[150/500] Training loss: 0.9881
+[200/500] Training loss: 0.9751
+[250/500] Training loss: 0.9579
+[300/500] Training loss: 0.9413
+[350/500] Training loss: 0.9272
+[400/500] Training loss: 0.9137
+[450/500] Training loss: 0.8991
+[500/500] Training loss: 0.8826
+Training time for vanilla_lstm: 114.4431 seconds
+Mean time per epoch for vanilla_lstm: 0.2289 seconds
+model_path ./models/vanilla_lstm.pth
+==== plot losses - vanilla_lstm ====== 
+===== scores for vanilla_lstm ====
+vanilla_lstm: [0.265] 1.0, 1.4, 0.8, 1.0, 0.9, 1.0, 0.9
+RMSE for Vanilla LSTM:  7636214.810665465
+Batch size: 16, Learning rate: 1e-05, Num layers: 3, Hidden dim: 64
+vanilla_lstm
+{'vanilla_lstm': LSTMModel(
+  (lstm): LSTM(30, 64, num_layers=3, batch_first=True)
+  (fc): Linear(in_features=64, out_features=1, bias=True)
+)}
+===== training vanilla_lstm =====
+[1/500] Training loss: 0.9981
+[2/500] Training loss: 0.9980
+[3/500] Training loss: 0.9979
+[4/500] Training loss: 0.9978
+[5/500] Training loss: 0.9976
+[6/500] Training loss: 0.9975
+[7/500] Training loss: 0.9974
+[8/500] Training loss: 0.9973
+[9/500] Training loss: 0.9972
+[10/500] Training loss: 0.9970
+[50/500] Training loss: 0.9884
+[100/500] Training loss: 0.9596
+[150/500] Training loss: 0.9326
+[200/500] Training loss: 0.9078
+[250/500] Training loss: 0.8775
+[300/500] Training loss: 0.8462
+[350/500] Training loss: 0.8175
+[400/500] Training loss: 0.7916
+[450/500] Training loss: 0.7691
+[500/500] Training loss: 0.7495
+Training time for vanilla_lstm: 152.9567 seconds
+Mean time per epoch for vanilla_lstm: 0.3059 seconds
+model_path ./models/vanilla_lstm.pth
+==== plot losses - vanilla_lstm ====== 
+===== scores for vanilla_lstm ====
+vanilla_lstm: [0.317] 1.0, 1.3, 0.9, 1.1, 1.0, 1.1, 1.0
+RMSE for Vanilla LSTM:  8256854.972381871
+Batch size: 16, Learning rate: 1e-05, Num layers: 5, Hidden dim: 32
+vanilla_lstm
+{'vanilla_lstm': LSTMModel(
+  (lstm): LSTM(30, 32, num_layers=5, batch_first=True)
+  (fc): Linear(in_features=32, out_features=1, bias=True)
+)}
+===== training vanilla_lstm =====
+[1/500] Training loss: 0.9986
+[2/500] Training loss: 0.9985
+[3/500] Training loss: 0.9985
+[4/500] Training loss: 0.9985
+[5/500] Training loss: 0.9985
+[6/500] Training loss: 0.9985
+[7/500] Training loss: 0.9985
+[8/500] Training loss: 0.9985
+[9/500] Training loss: 0.9985
+[10/500] Training loss: 0.9985
+[50/500] Training loss: 0.9983
+[100/500] Training loss: 0.9975
+[150/500] Training loss: 0.9939
+[200/500] Training loss: 0.9826
+[250/500] Training loss: 0.9687
+[300/500] Training loss: 0.9563
+[350/500] Training loss: 0.9447
+[400/500] Training loss: 0.9330
+[450/500] Training loss: 0.9207
+[500/500] Training loss: 0.9074
+Training time for vanilla_lstm: 168.0325 seconds
+Mean time per epoch for vanilla_lstm: 0.3361 seconds
+model_path ./models/vanilla_lstm.pth
+==== plot losses - vanilla_lstm ====== 
+===== scores for vanilla_lstm ====
+vanilla_lstm: [0.266] 1.0, 1.4, 0.8, 1.0, 0.9, 1.0, 0.9
+RMSE for Vanilla LSTM:  7679372.3402209915
+Batch size: 16, Learning rate: 1e-05, Num layers: 5, Hidden dim: 64
+vanilla_lstm
+{'vanilla_lstm': LSTMModel(
+  (lstm): LSTM(30, 64, num_layers=5, batch_first=True)
+  (fc): Linear(in_features=64, out_features=1, bias=True)
+)}
+===== training vanilla_lstm =====
+[1/500] Training loss: 1.0014
+[2/500] Training loss: 1.0013
+[3/500] Training loss: 1.0011
+[4/500] Training loss: 1.0010
+[5/500] Training loss: 1.0008
+[6/500] Training loss: 1.0007
+[7/500] Training loss: 1.0006
+[8/500] Training loss: 1.0005
+[9/500] Training loss: 1.0004
+[10/500] Training loss: 1.0003
+[50/500] Training loss: 0.9982
+[100/500] Training loss: 0.9842
+[150/500] Training loss: 0.9549
+[200/500] Training loss: 0.9404
+[250/500] Training loss: 0.9252
+[300/500] Training loss: 0.9079
+[350/500] Training loss: 0.8886
+[400/500] Training loss: 0.8686
+[450/500] Training loss: 0.8500
+[500/500] Training loss: 0.8311
+Training time for vanilla_lstm: 236.6569 seconds
+Mean time per epoch for vanilla_lstm: 0.4733 seconds
+model_path ./models/vanilla_lstm.pth
+==== plot losses - vanilla_lstm ====== 
+===== scores for vanilla_lstm ====
+vanilla_lstm: [0.290] 1.0, 1.4, 0.9, 1.0, 0.9, 1.0, 0.9
+RMSE for Vanilla LSTM:  7814514.697489978
+Batch size: 32, Learning rate: 0.0001, Num layers: 2, Hidden dim: 32
+vanilla_lstm
+{'vanilla_lstm': LSTMModel(
+  (lstm): LSTM(30, 32, num_layers=2, batch_first=True)
+  (fc): Linear(in_features=32, out_features=1, bias=True)
+)}
+===== training vanilla_lstm =====
+[1/500] Training loss: 1.0228
+[2/500] Training loss: 1.0169
+[3/500] Training loss: 1.0118
+[4/500] Training loss: 1.0071
+[5/500] Training loss: 1.0025
+[6/500] Training loss: 0.9981
+[7/500] Training loss: 0.9937
+[8/500] Training loss: 0.9893
+[9/500] Training loss: 0.9849
+[10/500] Training loss: 0.9803
+[50/500] Training loss: 0.7929
+[100/500] Training loss: 0.6343
+[150/500] Training loss: 0.4912
+[200/500] Training loss: 0.3774
+[250/500] Training loss: 0.2894
+[300/500] Training loss: 0.2296
+[350/500] Training loss: 0.1971
+[400/500] Training loss: 0.1670
+[450/500] Training loss: 0.1456
+[500/500] Training loss: 0.1284
+Training time for vanilla_lstm: 87.0785 seconds
+Mean time per epoch for vanilla_lstm: 0.1742 seconds
+model_path ./models/vanilla_lstm.pth
+==== plot losses - vanilla_lstm ====== 
+===== scores for vanilla_lstm ====
+vanilla_lstm: [0.325] 1.0, 1.5, 1.3, 1.8, 1.4, 1.4, 1.4
+RMSE for Vanilla LSTM:  15027134.165980462
+Batch size: 32, Learning rate: 0.0001, Num layers: 2, Hidden dim: 64
+vanilla_lstm
+{'vanilla_lstm': LSTMModel(
+  (lstm): LSTM(30, 64, num_layers=2, batch_first=True)
+  (fc): Linear(in_features=64, out_features=1, bias=True)
+)}
+===== training vanilla_lstm =====
+[1/500] Training loss: 1.0144
+[2/500] Training loss: 1.0064
+[3/500] Training loss: 0.9999
+[4/500] Training loss: 0.9937
+[5/500] Training loss: 0.9877
+[6/500] Training loss: 0.9818
+[7/500] Training loss: 0.9758
+[8/500] Training loss: 0.9699
+[9/500] Training loss: 0.9641
+[10/500] Training loss: 0.9582
+[50/500] Training loss: 0.7221
+[100/500] Training loss: 0.5264
+[150/500] Training loss: 0.3625
+[200/500] Training loss: 0.2669
+[250/500] Training loss: 0.2075
+[300/500] Training loss: 0.1677
+[350/500] Training loss: 0.1389
+[400/500] Training loss: 0.1226
+[450/500] Training loss: 0.1080
+[500/500] Training loss: 0.0925
+Training time for vanilla_lstm: 113.9688 seconds
+Mean time per epoch for vanilla_lstm: 0.2279 seconds
+model_path ./models/vanilla_lstm.pth
+==== plot losses - vanilla_lstm ====== 
+===== scores for vanilla_lstm ====
+vanilla_lstm: [0.251] 1.1, 1.6, 1.3, 1.5, 1.3, 1.3, 1.1
+RMSE for Vanilla LSTM:  13513419.83223484
+Batch size: 32, Learning rate: 0.0001, Num layers: 3, Hidden dim: 32
+vanilla_lstm
+{'vanilla_lstm': LSTMModel(
+  (lstm): LSTM(30, 32, num_layers=3, batch_first=True)
+  (fc): Linear(in_features=32, out_features=1, bias=True)
+)}
+===== training vanilla_lstm =====
+[1/500] Training loss: 0.9981
+[2/500] Training loss: 0.9971
+[3/500] Training loss: 0.9963
+[4/500] Training loss: 0.9954
+[5/500] Training loss: 0.9944
+[6/500] Training loss: 0.9931
+[7/500] Training loss: 0.9916
+[8/500] Training loss: 0.9898
+[9/500] Training loss: 0.9875
+[10/500] Training loss: 0.9848
+[50/500] Training loss: 0.8055
+[100/500] Training loss: 0.6408
+[150/500] Training loss: 0.5089
+[200/500] Training loss: 0.3846
+[250/500] Training loss: 0.2869
+[300/500] Training loss: 0.2359
+[350/500] Training loss: 0.1976
+[400/500] Training loss: 0.1715
+[450/500] Training loss: 0.1480
+[500/500] Training loss: 0.1256
+Training time for vanilla_lstm: 113.9048 seconds
+Mean time per epoch for vanilla_lstm: 0.2278 seconds
+model_path ./models/vanilla_lstm.pth
+==== plot losses - vanilla_lstm ====== 
+===== scores for vanilla_lstm ====
+vanilla_lstm: [0.251] 1.2, 1.6, 1.3, 1.5, 1.3, 1.3, 1.5
+RMSE for Vanilla LSTM:  14774288.981791433
+Batch size: 32, Learning rate: 0.0001, Num layers: 3, Hidden dim: 64
+vanilla_lstm
+{'vanilla_lstm': LSTMModel(
+  (lstm): LSTM(30, 64, num_layers=3, batch_first=True)
+  (fc): Linear(in_features=64, out_features=1, bias=True)
+)}
+===== training vanilla_lstm =====
+[1/500] Training loss: 1.0003
+[2/500] Training loss: 0.9992
+[3/500] Training loss: 0.9983
+[4/500] Training loss: 0.9972
+[5/500] Training loss: 0.9958
+[6/500] Training loss: 0.9937
+[7/500] Training loss: 0.9907
+[8/500] Training loss: 0.9863
+[9/500] Training loss: 0.9803
+[10/500] Training loss: 0.9728
+[50/500] Training loss: 0.7134
+[100/500] Training loss: 0.4972
+[150/500] Training loss: 0.3519
+[200/500] Training loss: 0.2640
+[250/500] Training loss: 0.2114
+[300/500] Training loss: 0.1603
+[350/500] Training loss: 0.1289
+[400/500] Training loss: 0.1108
+[450/500] Training loss: 0.0976
+[500/500] Training loss: 0.0855
+Training time for vanilla_lstm: 152.9976 seconds
+Mean time per epoch for vanilla_lstm: 0.3060 seconds
+model_path ./models/vanilla_lstm.pth
+==== plot losses - vanilla_lstm ====== 
+===== scores for vanilla_lstm ====
+vanilla_lstm: [0.284] 1.2, 1.7, 1.3, 1.3, 1.2, 1.1, 1.2
+RMSE for Vanilla LSTM:  12984741.307013202
+Batch size: 32, Learning rate: 0.0001, Num layers: 5, Hidden dim: 32
+vanilla_lstm
+{'vanilla_lstm': LSTMModel(
+  (lstm): LSTM(30, 32, num_layers=5, batch_first=True)
+  (fc): Linear(in_features=32, out_features=1, bias=True)
+)}
+===== training vanilla_lstm =====
+[1/500] Training loss: 1.0108
+[2/500] Training loss: 1.0080
+[3/500] Training loss: 1.0060
+[4/500] Training loss: 1.0044
+[5/500] Training loss: 1.0031
+[6/500] Training loss: 1.0022
+[7/500] Training loss: 1.0014
+[8/500] Training loss: 1.0009
+[9/500] Training loss: 1.0004
+[10/500] Training loss: 1.0000
+[50/500] Training loss: 0.8617
+[100/500] Training loss: 0.6808
+[150/500] Training loss: 0.5642
+[200/500] Training loss: 0.4497
+[250/500] Training loss: 0.3670
+[300/500] Training loss: 0.2820
+[350/500] Training loss: 0.2284
+[400/500] Training loss: 0.1885
+[450/500] Training loss: 0.1637
+[500/500] Training loss: 0.1384
+Training time for vanilla_lstm: 167.6586 seconds
+Mean time per epoch for vanilla_lstm: 0.3353 seconds
+model_path ./models/vanilla_lstm.pth
+==== plot losses - vanilla_lstm ====== 
+===== scores for vanilla_lstm ====
+vanilla_lstm: [0.326] 1.1, 1.4, 1.6, 1.5, 1.5, 1.5, 1.4
+RMSE for Vanilla LSTM:  15351945.583004031
+Batch size: 32, Learning rate: 0.0001, Num layers: 5, Hidden dim: 64
+vanilla_lstm
+{'vanilla_lstm': LSTMModel(
+  (lstm): LSTM(30, 64, num_layers=5, batch_first=True)
+  (fc): Linear(in_features=64, out_features=1, bias=True)
+)}
+===== training vanilla_lstm =====
+[1/500] Training loss: 1.0056
+[2/500] Training loss: 1.0032
+[3/500] Training loss: 1.0019
+[4/500] Training loss: 1.0010
+[5/500] Training loss: 1.0004
+[6/500] Training loss: 1.0000
+[7/500] Training loss: 0.9994
+[8/500] Training loss: 0.9985
+[9/500] Training loss: 0.9967
+[10/500] Training loss: 0.9927
+[50/500] Training loss: 0.7748
+[100/500] Training loss: 0.5609
+[150/500] Training loss: 0.4211
+[200/500] Training loss: 0.3124
+[250/500] Training loss: 0.2183
+[300/500] Training loss: 0.1654
+[350/500] Training loss: 0.1396
+[400/500] Training loss: 0.1094
+[450/500] Training loss: 0.1065
+[500/500] Training loss: 0.0867
+Training time for vanilla_lstm: 235.3867 seconds
+Mean time per epoch for vanilla_lstm: 0.4708 seconds
+model_path ./models/vanilla_lstm.pth
+==== plot losses - vanilla_lstm ====== 
+===== scores for vanilla_lstm ====
+vanilla_lstm: [0.236] 1.3, 1.5, 1.2, 1.3, 1.3, 1.1, 1.2
+RMSE for Vanilla LSTM:  12541475.003906276
+Batch size: 32, Learning rate: 1e-05, Num layers: 2, Hidden dim: 32
+vanilla_lstm
+{'vanilla_lstm': LSTMModel(
+  (lstm): LSTM(30, 32, num_layers=2, batch_first=True)
+  (fc): Linear(in_features=32, out_features=1, bias=True)
+)}
+===== training vanilla_lstm =====
+[1/500] Training loss: 1.0195
+[2/500] Training loss: 1.0189
+[3/500] Training loss: 1.0182
+[4/500] Training loss: 1.0176
+[5/500] Training loss: 1.0170
+[6/500] Training loss: 1.0164
+[7/500] Training loss: 1.0158
+[8/500] Training loss: 1.0152
+[9/500] Training loss: 1.0146
+[10/500] Training loss: 1.0141
+[50/500] Training loss: 0.9965
+[100/500] Training loss: 0.9793
+[150/500] Training loss: 0.9611
+[200/500] Training loss: 0.9410
+[250/500] Training loss: 0.9211
+[300/500] Training loss: 0.9033
+[350/500] Training loss: 0.8867
+[400/500] Training loss: 0.8702
+[450/500] Training loss: 0.8533
+[500/500] Training loss: 0.8360
+Training time for vanilla_lstm: 87.1351 seconds
+Mean time per epoch for vanilla_lstm: 0.1743 seconds
+model_path ./models/vanilla_lstm.pth
+==== plot losses - vanilla_lstm ====== 
+===== scores for vanilla_lstm ====
+vanilla_lstm: [0.273] 1.0, 1.3, 0.9, 1.0, 0.9, 1.0, 0.9
+RMSE for Vanilla LSTM:  7499504.568036846
+Batch size: 32, Learning rate: 1e-05, Num layers: 2, Hidden dim: 64
+vanilla_lstm
+{'vanilla_lstm': LSTMModel(
+  (lstm): LSTM(30, 64, num_layers=2, batch_first=True)
+  (fc): Linear(in_features=64, out_features=1, bias=True)
+)}
+===== training vanilla_lstm =====
+[1/500] Training loss: 1.0056
+[2/500] Training loss: 1.0050
+[3/500] Training loss: 1.0045
+[4/500] Training loss: 1.0039
+[5/500] Training loss: 1.0033
+[6/500] Training loss: 1.0028
+[7/500] Training loss: 1.0022
+[8/500] Training loss: 1.0017
+[9/500] Training loss: 1.0011
+[10/500] Training loss: 1.0006
+[50/500] Training loss: 0.9801
+[100/500] Training loss: 0.9485
+[150/500] Training loss: 0.9137
+[200/500] Training loss: 0.8825
+[250/500] Training loss: 0.8541
+[300/500] Training loss: 0.8289
+[350/500] Training loss: 0.8081
+[400/500] Training loss: 0.7905
+[450/500] Training loss: 0.7746
+[500/500] Training loss: 0.7596
+Training time for vanilla_lstm: 112.2679 seconds
+Mean time per epoch for vanilla_lstm: 0.2245 seconds
+model_path ./models/vanilla_lstm.pth
+==== plot losses - vanilla_lstm ====== 
+===== scores for vanilla_lstm ====
+vanilla_lstm: [0.305] 1.0, 1.3, 0.9, 1.1, 0.9, 1.1, 0.9
+RMSE for Vanilla LSTM:  7935503.151979978
+Batch size: 32, Learning rate: 1e-05, Num layers: 3, Hidden dim: 32
+vanilla_lstm
+{'vanilla_lstm': LSTMModel(
+  (lstm): LSTM(30, 32, num_layers=3, batch_first=True)
+  (fc): Linear(in_features=32, out_features=1, bias=True)
+)}
+===== training vanilla_lstm =====
+[1/500] Training loss: 0.9988
+[2/500] Training loss: 0.9987
+[3/500] Training loss: 0.9986
+[4/500] Training loss: 0.9986
+[5/500] Training loss: 0.9985
+[6/500] Training loss: 0.9985
+[7/500] Training loss: 0.9984
+[8/500] Training loss: 0.9983
+[9/500] Training loss: 0.9983
+[10/500] Training loss: 0.9982
+[50/500] Training loss: 0.9957
+[100/500] Training loss: 0.9903
+[150/500] Training loss: 0.9789
+[200/500] Training loss: 0.9622
+[250/500] Training loss: 0.9465
+[300/500] Training loss: 0.9335
+[350/500] Training loss: 0.9213
+[400/500] Training loss: 0.9082
+[450/500] Training loss: 0.8934
+[500/500] Training loss: 0.8764
+Training time for vanilla_lstm: 114.1154 seconds
+Mean time per epoch for vanilla_lstm: 0.2282 seconds
+model_path ./models/vanilla_lstm.pth
+==== plot losses - vanilla_lstm ====== 
+===== scores for vanilla_lstm ====
+vanilla_lstm: [0.268] 1.0, 1.3, 0.8, 1.0, 0.9, 1.0, 0.9
+RMSE for Vanilla LSTM:  7627072.693870205
+Batch size: 32, Learning rate: 1e-05, Num layers: 3, Hidden dim: 64
+vanilla_lstm
+{'vanilla_lstm': LSTMModel(
+  (lstm): LSTM(30, 64, num_layers=3, batch_first=True)
+  (fc): Linear(in_features=64, out_features=1, bias=True)
+)}
+===== training vanilla_lstm =====
+[1/500] Training loss: 1.0005
+[2/500] Training loss: 1.0003
+[3/500] Training loss: 1.0001
+[4/500] Training loss: 1.0000
+[5/500] Training loss: 0.9998
+[6/500] Training loss: 0.9996
+[7/500] Training loss: 0.9995
+[8/500] Training loss: 0.9993
+[9/500] Training loss: 0.9992
+[10/500] Training loss: 0.9990
+[50/500] Training loss: 0.9914
+[100/500] Training loss: 0.9683
+[150/500] Training loss: 0.9429
+[200/500] Training loss: 0.9232
+[250/500] Training loss: 0.9010
+[300/500] Training loss: 0.8720
+[350/500] Training loss: 0.8385
+[400/500] Training loss: 0.8073
+[450/500] Training loss: 0.7814
+[500/500] Training loss: 0.7599
+Training time for vanilla_lstm: 152.5812 seconds
+Mean time per epoch for vanilla_lstm: 0.3052 seconds
+model_path ./models/vanilla_lstm.pth
+==== plot losses - vanilla_lstm ====== 
+===== scores for vanilla_lstm ====
+vanilla_lstm: [0.318] 1.0, 1.3, 0.8, 1.1, 0.9, 1.1, 1.0
+RMSE for Vanilla LSTM:  7990448.98138838
+Batch size: 32, Learning rate: 1e-05, Num layers: 5, Hidden dim: 32
+vanilla_lstm
+{'vanilla_lstm': LSTMModel(
+  (lstm): LSTM(30, 32, num_layers=5, batch_first=True)
+  (fc): Linear(in_features=32, out_features=1, bias=True)
+)}
+===== training vanilla_lstm =====
+[1/500] Training loss: 1.0217
+[2/500] Training loss: 1.0211
+[3/500] Training loss: 1.0204
+[4/500] Training loss: 1.0197
+[5/500] Training loss: 1.0191
+[6/500] Training loss: 1.0185
+[7/500] Training loss: 1.0179
+[8/500] Training loss: 1.0173
+[9/500] Training loss: 1.0167
+[10/500] Training loss: 1.0162
+[50/500] Training loss: 1.0035
+[100/500] Training loss: 0.9996
+[150/500] Training loss: 0.9973
+[200/500] Training loss: 0.9917
+[250/500] Training loss: 0.9803
+[300/500] Training loss: 0.9664
+[350/500] Training loss: 0.9537
+[400/500] Training loss: 0.9427
+[450/500] Training loss: 0.9315
+[500/500] Training loss: 0.9196
+Training time for vanilla_lstm: 168.3520 seconds
+Mean time per epoch for vanilla_lstm: 0.3367 seconds
+model_path ./models/vanilla_lstm.pth
+==== plot losses - vanilla_lstm ====== 
+===== scores for vanilla_lstm ====
+vanilla_lstm: [0.267] 1.0, 1.4, 0.8, 1.0, 0.9, 1.0, 0.9
+RMSE for Vanilla LSTM:  7531194.109272448
+Batch size: 32, Learning rate: 1e-05, Num layers: 5, Hidden dim: 64
+vanilla_lstm
+{'vanilla_lstm': LSTMModel(
+  (lstm): LSTM(30, 64, num_layers=5, batch_first=True)
+  (fc): Linear(in_features=64, out_features=1, bias=True)
+)}
+===== training vanilla_lstm =====
+[1/500] Training loss: 0.9997
+[2/500] Training loss: 0.9997
+[3/500] Training loss: 0.9996
+[4/500] Training loss: 0.9995
+[5/500] Training loss: 0.9995
+[6/500] Training loss: 0.9994
+[7/500] Training loss: 0.9994
+[8/500] Training loss: 0.9994
+[9/500] Training loss: 0.9993
+[10/500] Training loss: 0.9993
+[50/500] Training loss: 0.9983
+[100/500] Training loss: 0.9905
+[150/500] Training loss: 0.9631
+[200/500] Training loss: 0.9496
+[250/500] Training loss: 0.9358
+[300/500] Training loss: 0.9190
+[350/500] Training loss: 0.8978
+[400/500] Training loss: 0.8738
+[450/500] Training loss: 0.8528
+[500/500] Training loss: 0.8329
+Training time for vanilla_lstm: 234.4232 seconds
+Mean time per epoch for vanilla_lstm: 0.4688 seconds
+model_path ./models/vanilla_lstm.pth
+==== plot losses - vanilla_lstm ====== 
+===== scores for vanilla_lstm ====
+vanilla_lstm: [0.293] 1.0, 1.4, 0.9, 1.0, 0.9, 1.0, 1.0
+RMSE for Vanilla LSTM:  8012407.734983809
+
+------------------------------------------------------------
+Sender: LSF System <lsfadmin@hpc.dtu.dk>
+Subject: Job 25556928: <LSTM> in cluster <dcc> Done
+
+Job <LSTM> was submitted from host <hpclogin1> by user <yahei> in cluster <dcc> at Fri Jul 11 11:32:27 2025
+Job was executed on host(s) <24*n-62-21-90>, in queue <hpc>, as user <yahei> in cluster <dcc> at Fri Jul 11 11:32:28 2025
+</zhome/25/9/211757> was used as the home directory.
+</zhome/25/9/211757/hpc4wind2025_assignment2/LSTM> was used as the working directory.
+Started at Fri Jul 11 11:32:28 2025
+Terminated at Fri Jul 11 12:30:48 2025
+Results reported at Fri Jul 11 12:30:48 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -q hpc
+#BSUB -J LSTM
+#BSUB -n 24
+#BSUB -W 03:00
+#BSUB -u yahei@dtu.dk
+#BSUB -P hpc4wind2025
+#BSUB -R "rusage[mem=16GB]"
+#BSUB -R "select[model==XeonE5_2650v4]"
+#BSUB -R "span[hosts=1]"
+
+#BSUB -o Output/LSTM_%J.out
+#BSUB -e Output/LSTM_%J.err
+
+source /dtu/projects/HPC4Wind_2025/conda/conda_init.sh
+conda activate hpc4wind
+
+#script here
+python /zhome/25/9/211757/hpc4wind2025_assignment2/LSTM/LSTM.py
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   3501.53 sec.
+    Max Memory :                                 533 MB
+    Average Memory :                             531.12 MB
+    Total Requested Memory :                     393216.00 MB
+    Delta Memory :                               392683.00 MB
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                6
+    Run time :                                   3500 sec.
+    Turnaround time :                            3501 sec.
+
+The output (if any) is above this job summary.
+
+
+
+PS:
+
+Read file <Output/LSTM_25556928.err> for stderr output of this job.
+
